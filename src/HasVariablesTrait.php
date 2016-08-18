@@ -27,7 +27,7 @@ trait HasVariablesTrait
 
     public function setVariables($variables)
     {
-        $this->variables = $variables;
+        $this->variables = $this->convertToVariables(variables);
     }
 
 
