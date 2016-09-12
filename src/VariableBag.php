@@ -62,4 +62,25 @@ class VariableBag
             $this->set($key, $this->get($key, $defaults[$key]));
         }, array_keys($defaults));
     }
+
+
+    public function extract($keys = [], $filtered = true):array
+    {
+        $out = [];
+
+        array_map(function ($key) use (&$out) {
+            $out[$key] = $this->get($key);
+        }, $keys);
+
+        if ($filtered) {
+            $out = array_filter($out);
+        }
+        return $out;
+    }
+
+    public function getOneOf($name, $allowed = [], $default = null)
+    {
+        $value = $this->get($name);
+        return in_array($value, $allowed) ? $value : $default;
+    }
 }
