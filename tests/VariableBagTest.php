@@ -83,4 +83,15 @@ class VariableBagTest extends PHPUnit_Framework_TestCase
 
         $this->assertArrayHasKey('test', $vars->all());
     }
+
+    /**
+     * @test
+     */
+    public function canApplyDefaults()
+    {
+        $vars = new VariableBag();
+        $this->assertNull($vars->get('test'));
+        $vars->applyDefaults(['test' => 'ok']);
+        $this->assertEquals($vars->get('test'), 'ok');
+    }
 }

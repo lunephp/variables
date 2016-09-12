@@ -50,4 +50,16 @@ class VariableBag
     {
         return $this->vars;
     }
+
+    /**
+     * Applies default values
+     *
+     * @param array $defaults
+     */
+    public function applyDefaults(array $defaults = [])
+    {
+        array_map(function ($key) use ($defaults) {
+            $this->set($key, $this->get($key, $defaults[$key]));
+        }, array_keys($defaults));
+    }
 }
