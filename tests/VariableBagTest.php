@@ -94,4 +94,6 @@ class VariableBagTest extends PHPUnit_Framework_TestCase
         $vars->applyDefaults(['test' => 'ok']);
         $this->assertEquals($vars->get('test'), 'ok');
     }
+
+
 }
